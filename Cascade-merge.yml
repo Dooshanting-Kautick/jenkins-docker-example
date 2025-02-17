@@ -1,0 +1,17 @@
+name: Cascading Auto-Merge
+
+on: 
+  pull_request:
+    types: [closed]
+      
+jobs:
+  basic-ubuntu-20:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Cascading Auto-Merge Action
+        uses: ActionsDesk/cascading-downstream-merge@v1.2.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          merge_token: ${{ secrets.MERGE_TOKEN }}
+          prefixes: release/
+          refBranch: develop
